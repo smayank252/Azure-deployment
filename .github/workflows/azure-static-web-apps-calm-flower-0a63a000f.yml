@@ -19,6 +19,15 @@ jobs:
         with:
           submodules: true
           lfs: false
+      - name: npm ersion
+        run: npm -v
+      
+      - name: Install custom npm version
+        run: |
+          npm install -g npm@8.5.5
+      - name: npm dersion
+        run: npm -v
+     
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -32,6 +41,8 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "build" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
+      - name: npm ersion
+        run: npm -v
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
